@@ -26,10 +26,10 @@ var Button = React.createClass({
   componentWillReceiveProps: function(newProps) {
     if (newProps.clear) {
       this.setState({sounds: []});
-    } else if (newProps.active) {
+    } else if (newProps.active && this.props.instrument === newProps.instrument) {
       this.state.instruments.forEach(function(instrument){
-      instrument.currentTime = 0;
-      instrument.play();
+        instrument.currentTime = 0;
+        instrument.play();
       });
     }
   },
