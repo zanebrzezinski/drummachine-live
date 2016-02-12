@@ -2,6 +2,7 @@ var React = require('react');
 var Button = require('./button');
 var sounds = require('../constants/sounds');
 var InstrumentPanelItem = require('./instrument_panel_item');
+var ApiUtil = require('../util/api_util');
 
 var Drummachine = React.createClass({
 
@@ -13,7 +14,7 @@ var Drummachine = React.createClass({
     }
 
     return {playing: false, currentStep: 0, instrument: "Kick",
-    tempo: 150, clear: false, pattern: pattern};
+    tempo: 150, clear: false, pattern: pattern, title: ""};
   },
 
   play: function(){
@@ -48,7 +49,11 @@ var Drummachine = React.createClass({
   },
 
   save: function() {
-    debugger
+    ApiUtil.savePattern({pattern: JSON.stringify(this.state.pattern), title: this.state.title});
+  },
+
+  changeTitle: function(e){
+    this.setState({title: e.currentTarget.value});
   },
 
   setInstrument: function(e) {
@@ -104,6 +109,7 @@ var Drummachine = React.createClass({
         <div className={playingClass} onClick={this.play}>PLAY</div>
         <div className="big-button" onClick={this.clear}>Clear</div>
         <div className="big-button" onClick={this.save}>Save</div>
+        <input type="text" placeholder="Pattern Name" onChange={this.changeTitle}/>
         <div className="tempo-slider-group">
           <span className="panel-label">Tempo</span>
           <input onChange={this.setTempo} className="tempo-slider"
