@@ -15,10 +15,12 @@ var Button = React.createClass({
     if (idx === -1) {
       oldSounds.push(this.props.instrument);
       oldInstruments.push(document.getElementById(this.props.instrument + " instrument"));
+      this.props.saveStep(this.state.sounds, this.props.idx);
       this.setState({on: true, sounds: oldSounds});
     } else {
       oldSounds.splice(idx, 1);
       oldInstruments.splice(idx, 1);
+      this.props.saveStep(this.state.sounds, this.props.idx);
       this.setState({on: false, sounds: oldSounds, instruments: oldInstruments});
     }
   },

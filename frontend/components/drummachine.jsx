@@ -6,7 +6,14 @@ var InstrumentPanelItem = require('./instrument_panel_item');
 var Drummachine = React.createClass({
 
   getInitialState: function(){
-    return {playing: false, currentStep: 0, instrument: "Kick", tempo: 150, clear: false};
+
+    var pattern = [];
+    for (var i = 0; i < 17; i++) {
+      pattern.push([]);
+    }
+
+    return {playing: false, currentStep: 0, instrument: "Kick",
+    tempo: 150, clear: false, pattern: pattern};
   },
 
   play: function(){
@@ -34,6 +41,16 @@ var Drummachine = React.createClass({
     }
   },
 
+  saveStep: function(step, idx) {
+    newPattern = this.state.pattern;
+    newPattern[idx] = step;
+    this.setState({pattern: newPattern});
+  },
+
+  save: function() {
+    debugger
+  },
+
   setInstrument: function(e) {
     this.setState({instrument: e.currentTarget.id});
   },
@@ -51,11 +68,11 @@ var Drummachine = React.createClass({
       if (i === this.state.currentStep && this.state.playing) {
         buttons.push(<Button key={i} active="true"
           playing={this.state.playing} instrument={this.state.instrument}
-          clear={this.state.clear}/>);
+          clear={this.state.clear} saveStep={this.saveStep} idx={i}/>);
       } else {
         buttons.push(<Button key={i}
           playing={this.state.playing} instrument={this.state.instrument}
-          clear={this.state.clear}/>);
+          clear={this.state.clear} saveStep={this.saveStep} idx={i}/>);
       }
     }
 
@@ -69,7 +86,8 @@ var Drummachine = React.createClass({
       } else {
         instrumentPanel.push(
           <InstrumentPanelItem key={instrument + "button"}
-          instrument={instrument} setInstrument={this.setInstrument}/>
+          instrument={instrument}
+          setInstrument={this.setInstrument} save/>
         );
       }
     }
@@ -85,6 +103,7 @@ var Drummachine = React.createClass({
       <div className="drum-machine group">
         <div className={playingClass} onClick={this.play}>PLAY</div>
         <div className="big-button" onClick={this.clear}>Clear</div>
+        <div className="big-button" onClick={this.save}>Save</div>
         <div className="tempo-slider-group">
           <span className="panel-label">Tempo</span>
           <input onChange={this.setTempo} className="tempo-slider"
