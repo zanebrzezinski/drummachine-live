@@ -171,3 +171,10 @@
 .footer-name{
   color: blue;
 }
+
+.loading {
+  width: 800px;
+  margin:  50px auto;
+  font-size: 60px;
+  text-align: center;
+}
