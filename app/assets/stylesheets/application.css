@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
@@ -103,7 +104,6 @@
 .instrument-panel {
   display: block;
   width: 500px;
-  margin: auto;
 }
 
 .instrument-select {
@@ -115,6 +115,38 @@
   display: block;
   margin: 5px;
   font-size: 10px;
+}
+
+.save-load-panel {
+  float: right;
+  margin: 20px;
+}
+
+.title-input {
+  background-color: white;
+  padding: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  position: relative;
+}
+
+.dropdown {
+  background-color: white;
+  position: absolute;
+  width: 198px;
+}
+
+.dropdown-item {
+  padding: 5px;
+  font-size: 12px;
+  display: block;
+}
+
+.dropdown-arrow {
+  background-color: white;
+  padding: 6px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .buttons {

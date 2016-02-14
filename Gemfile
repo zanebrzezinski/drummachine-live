@@ -25,6 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'aws-sdk', '~> 1.6'
 gem 'figaro'
+gem 'jbuilder', '~> 2.0'
+gem 'font-awesome-rails'
+
+
 
 
 # Use ActiveModel has_secure_password

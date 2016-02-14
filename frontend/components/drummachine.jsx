@@ -3,18 +3,33 @@ var Button = require('./button');
 var sounds = require('../constants/sounds');
 var InstrumentPanelItem = require('./instrument_panel_item');
 var ApiUtil = require('../util/api_util');
+var PatternStore = require('../stores/pattern_store');
 
 var Drummachine = React.createClass({
 
   getInitialState: function(){
 
     var pattern = [];
-    for (var i = 0; i < 17; i++) {
+    for (var i = 0; i < 16; i++) {
       pattern.push([]);
     }
 
     return {playing: false, currentStep: 0, instrument: "Kick",
-    tempo: 150, clear: false, pattern: pattern, title: ""};
+    tempo: 150, clear: false, pattern: pattern, title: "New Pattern", allPatterns: {},
+    dropdown: false};
+  },
+
+  componentDidMount: function() {
+    this.token = PatternStore.addListener(this._onChange);
+    this.setState({allPatterns: PatternStore.patterns()});
+  },
+
+  componentWillUnmount: function() {
+    this.token.remove();
+  },
+
+  _onChange: function() {
+    this.setState({allPatterns: PatternStore.patterns()});
   },
 
   play: function(){
@@ -43,7 +58,7 @@ var Drummachine = React.createClass({
   },
 
   saveStep: function(step, idx) {
-    newPattern = this.state.pattern;
+    newPattern = this.state.pattern || [];
     newPattern[idx] = step;
     this.setState({pattern: newPattern});
   },
@@ -66,6 +81,18 @@ var Drummachine = React.createClass({
     this.interval = window.setInterval(this.advance, e.currentTarget.value);
   },
 
+  loadPattern: function(e) {
+    this.setState({pattern: this.state.allPatterns[e.currentTarget.id]});
+  },
+
+  displayDropdown: function() {
+    if (this.state.dropdown) {
+      this.setState({dropdown: false});
+    } else {
+      this.setState({dropdown: true});
+    }
+  },
+
   render: function() {
     var buttons = [];
 
@@ -73,11 +100,35 @@ var Drummachine = React.createClass({
       if (i === this.state.currentStep && this.state.playing) {
         buttons.push(<Button key={i} active="true"
           playing={this.state.playing} instrument={this.state.instrument}
-          clear={this.state.clear} saveStep={this.saveStep} idx={i}/>);
+          clear={this.state.clear} saveStep={this.saveStep} notes={this.state.pattern[i]} idx={i}/>);
       } else {
         buttons.push(<Button key={i}
           playing={this.state.playing} instrument={this.state.instrument}
           clear={this.state.clear} saveStep={this.saveStep} idx={i}/>);
+      }
+    }
+
+    var dropdownIcon;
+    if (this.state.dropdown){
+      dropdownIcon = (
+        <i className="fa fa-caret-down dropdown-arrow" onClick={this.displayDropdown}></i>
+      );
+    } else {
+      dropdownIcon = (
+        <i className="fa fa-caret-left dropdown-arrow" onClick={this.displayDropdown}></i>
+      );
+    }
+
+    var dropdown;
+    if (this.state.dropdown) {
+      if (Object.keys(this.state.allPatterns).length === 0) {
+        dropdown = <li>No Saved Patterns</li>;
+      }
+      else {
+        dropdown = Object.keys(this.state.allPatterns).map(function(title){
+          return( <li key={title} id={title}  className="dropdown-item"
+            onClick={this.loadPattern}>{title}</li>);
+        }.bind(this));
       }
     }
 
@@ -109,12 +160,18 @@ var Drummachine = React.createClass({
         <div className={playingClass} onClick={this.play}>PLAY</div>
         <div className="big-button" onClick={this.clear}>Clear</div>
         <div className="big-button" onClick={this.save}>Save</div>
-        <input type="text" placeholder="Pattern Name" onChange={this.changeTitle}/>
         <div className="tempo-slider-group">
           <span className="panel-label">Tempo</span>
           <input onChange={this.setTempo} className="tempo-slider"
             type="range" min="50" max="500"
             value={this.state.tempo}/>
+        </div>
+        <div className="save-load-panel">
+          <input type="text" className="title-input"placeholder="Pattern Name" onChange={this.changeTitle}/>
+          {dropdownIcon}
+          <ul className="dropdown">
+          {dropdown}
+          </ul>
         </div>
         <div className="instrument-panel">
           {instrumentPanel}
