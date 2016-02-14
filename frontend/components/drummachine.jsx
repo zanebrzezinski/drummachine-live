@@ -109,14 +109,17 @@ var Drummachine = React.createClass({
     }
 
     var dropdownIcon;
+    var open;
     if (this.state.dropdown){
       dropdownIcon = (
-        <i className="fa fa-caret-down dropdown-arrow" onClick={this.displayDropdown}></i>
+        <i className="fa fa-caret-down dropdown-arrow open" onClick={this.displayDropdown}></i>
       );
+      open = "open";
     } else {
       dropdownIcon = (
         <i className="fa fa-caret-left dropdown-arrow" onClick={this.displayDropdown}></i>
       );
+      open = "";
     }
 
     var dropdown;
@@ -167,7 +170,7 @@ var Drummachine = React.createClass({
             value={this.state.tempo}/>
         </div>
         <div className="save-load-panel">
-          <input type="text" className="title-input"placeholder="Pattern Name" onChange={this.changeTitle}/>
+          <input type="text" className={"title-input " + open} placeholder="Pattern Name" onChange={this.changeTitle}/>
           {dropdownIcon}
           <ul className="dropdown">
           {dropdown}

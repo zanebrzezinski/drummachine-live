@@ -130,16 +130,24 @@
   position: relative;
 }
 
+
+
 .dropdown {
   background-color: white;
   position: absolute;
-  width: 198px;
+  width: 197px;
+}
+
+.dropdown:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .dropdown-item {
   padding: 5px;
   font-size: 12px;
   display: block;
+  border-top: 1px solid #eee;
 }
 
 .dropdown-arrow {
@@ -207,6 +215,11 @@
 
 .footer-name{
   color: blue;
+}
+
+.open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .loading {
