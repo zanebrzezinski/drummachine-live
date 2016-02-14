@@ -82,7 +82,9 @@ var Drummachine = React.createClass({
   },
 
   loadPattern: function(e) {
-    this.setState({pattern: this.state.allPatterns[e.currentTarget.id]});
+
+    this.setState({pattern: JSON.parse(this.state.allPatterns[e.currentTarget.id]),
+      title: e.currentTarget.id, dropdown: false});
   },
 
   displayDropdown: function() {
@@ -100,11 +102,11 @@ var Drummachine = React.createClass({
       if (i === this.state.currentStep && this.state.playing) {
         buttons.push(<Button key={i} active="true"
           playing={this.state.playing} instrument={this.state.instrument}
-          clear={this.state.clear} saveStep={this.saveStep} notes={this.state.pattern[i]} idx={i}/>);
+          clear={this.state.clear} saveStep={this.saveStep} sounds={this.state.pattern[i]} idx={i}/>);
       } else {
         buttons.push(<Button key={i}
           playing={this.state.playing} instrument={this.state.instrument}
-          clear={this.state.clear} saveStep={this.saveStep} idx={i}/>);
+          clear={this.state.clear} saveStep={this.saveStep} idx={i} sounds={this.state.pattern[i]} />);
       }
     }
 
@@ -125,7 +127,7 @@ var Drummachine = React.createClass({
     var dropdown;
     if (this.state.dropdown) {
       if (Object.keys(this.state.allPatterns).length === 0) {
-        dropdown = <li>No Saved Patterns</li>;
+        dropdown = <li className="dropdown-item">No Saved Patterns</li>;
       }
       else {
         dropdown = Object.keys(this.state.allPatterns).map(function(title){
@@ -170,7 +172,7 @@ var Drummachine = React.createClass({
             value={this.state.tempo}/>
         </div>
         <div className="save-load-panel">
-          <input type="text" className={"title-input " + open} placeholder="Pattern Name" onChange={this.changeTitle}/>
+          <input type="text" className={"title-input " + open} onChange={this.changeTitle} value={this.state.title}/>
           {dropdownIcon}
           <ul className="dropdown">
           {dropdown}
