@@ -14,7 +14,7 @@ var Drummachine = React.createClass({
       pattern.push([]);
     }
 
-    return {playing: false, currentStep: 0, instrument: "Kick",
+    return {playing: false, currentStep: -1, instrument: "Kick",
     tempo: 150, clear: false, pattern: pattern, title: "", allPatterns: {},
     dropdown: false, errors: null};
   },
@@ -44,6 +44,12 @@ var Drummachine = React.createClass({
   },
 
   advance: function() {
+    pattern = this.state.pattern;
+    pattern[this.state.currentStep].forEach(function(sound){
+      var instrument = document.getElementById(sound + " instrument");
+      instrument.currentTime = 0;
+      instrument.play();
+    });
     if (this.state.currentStep < 15) {
       this.setState({currentStep: this.state.currentStep + 1});
     } else {

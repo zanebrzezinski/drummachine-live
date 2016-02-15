@@ -14,18 +14,6 @@ var Button = React.createClass({
     }
   },
 
-  componentWillReceiveProps: function(newProps) {
-    if (newProps.sounds === this.props.sounds) {
-      newProps.sounds.forEach(function(sound){
-        var instrument = document.getElementById(sound + " instrument");
-        if (this.props.active) {
-          instrument.currentTime = 0;
-          instrument.play();
-        }
-      }.bind(this));
-    }
-  },
-
   render: function(){
     var instruments;
     var light;
