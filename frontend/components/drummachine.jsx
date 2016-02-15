@@ -14,7 +14,7 @@ var Drummachine = React.createClass({
       pattern.push([]);
     }
 
-    return {playing: false, currentStep: -1, instrument: "Kick",
+    return {playing: false, currentStep: 0, instrument: "Kick",
     tempo: 150, clear: false, pattern: pattern, title: "", allPatterns: {},
     dropdown: false, errors: null};
   },
