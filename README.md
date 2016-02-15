@@ -10,6 +10,8 @@ with the instrument select buttons in the middle of the drum machine.  Each soun
 has an individual volume slider beneath it's instrument select button.  The global
 tempo can be set with the tempo slider in the upper right hand corner.
 
+Patterns are saved to the users browser cookie.
+
 
 ![screenshot]
 

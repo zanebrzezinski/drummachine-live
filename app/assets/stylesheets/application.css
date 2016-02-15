@@ -116,6 +116,7 @@
 .instrument-panel {
   display: block;
   width: 500px;
+  margin: auto;
 }
 
 .instrument-select {
@@ -148,6 +149,10 @@
   background-color: white;
   position: absolute;
   width: 197px;
+  z-index: 50;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .dropdown:last-child {

@@ -18,7 +18,7 @@ var Button = React.createClass({
     if (newProps.sounds === this.props.sounds) {
       newProps.sounds.forEach(function(sound){
         var instrument = document.getElementById(sound + " instrument");
-        if (newProps.active) {
+        if (this.props.active) {
           instrument.currentTime = 0;
           instrument.play();
         }
