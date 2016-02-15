@@ -10,10 +10,18 @@ var addPattern = function(pattern) {
   _patterns[pattern.title] = pattern.pattern;
 };
 
+var updatePatterns = function(patterns) {
+  _patterns = patterns;
+};
+
 PatternStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case CONSTANTS.PATTERN_RECEIVED:
       addPattern(payload.pattern);
+      PatternStore.__emitChange();
+      break;
+    case CONSTANTS.LOAD_PATTERNS:
+      updatePatterns(payload.patterns);
       PatternStore.__emitChange();
   }
 };

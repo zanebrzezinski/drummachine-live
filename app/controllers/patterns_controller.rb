@@ -1,6 +1,10 @@
 class PatternsController < ActionController::Base
 
   def create
+    patterns = session[:patterns] || "{}"
+    patterns = JSON.parse(patterns)
+    patterns[pattern_params[:title]] = pattern_params[:pattern]
+    session[:patterns] = patterns.to_json
     @title = pattern_params[:title]
     @pattern = pattern_params[:pattern]
     render :show
@@ -10,6 +14,8 @@ class PatternsController < ActionController::Base
   end
 
   def index
+    @patterns = session[:patterns]
+    render :index
   end
 
   private

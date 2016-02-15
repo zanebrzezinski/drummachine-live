@@ -11,6 +11,17 @@ ApiUtil = {
         ApiActions.receivePattern(data);
       }
     });
+  },
+
+  loadPatterns: function() {
+    $.ajax({
+      type: "get",
+      url: "patterns",
+      dataType: "json",
+      success: function(data){
+        ApiActions.loadPatterns(JSON.parse(data.patterns));
+      }
+    });
   }
 };
 

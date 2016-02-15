@@ -9,6 +9,13 @@ var ApiActions = {
       actionType: CONSTANTS.PATTERN_RECEIVED,
       pattern: pattern
     });
+  },
+
+  loadPatterns: function(patterns) {
+    AppDispatcher.dispatch({
+      actionType: CONSTANTS.LOAD_PATTERNS,
+      patterns: patterns
+    });
   }
 
 };

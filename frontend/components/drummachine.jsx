@@ -20,6 +20,7 @@ var Drummachine = React.createClass({
   },
 
   componentDidMount: function() {
+    ApiUtil.loadPatterns();
     this.token = PatternStore.addListener(this._onChange);
     this.setState({allPatterns: PatternStore.patterns()});
   },
