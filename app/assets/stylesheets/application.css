@@ -81,6 +81,18 @@
   cursor: pointer;
 }
 
+.play:hover {
+  color: red;
+}
+
+.clear:hover {
+  background-color: red;
+}
+
+.save:hover {
+  background-color: lime;
+}
+
 .tempo-slider-group {
   float: right;
   margin: 20px;
@@ -148,6 +160,10 @@
   font-size: 12px;
   display: block;
   border-top: 1px solid #eee;
+}
+
+.dropdown-item:hover {
+  color: lime;
 }
 
 .dropdown-arrow {
@@ -220,6 +236,13 @@
 
 .active {
   background-color: yellow;
+}
+
+.errors {
+  color: red;
+  text-align: center;
+  margin: 5px;
+  font-size: 20px;
 }
 
 .loading {

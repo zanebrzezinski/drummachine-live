@@ -15,8 +15,8 @@ var Drummachine = React.createClass({
     }
 
     return {playing: false, currentStep: 0, instrument: "Kick",
-    tempo: 150, clear: false, pattern: pattern, title: "New Pattern", allPatterns: {},
-    dropdown: false};
+    tempo: 150, clear: false, pattern: pattern, title: "", allPatterns: {},
+    dropdown: false, errors: null};
   },
 
   componentDidMount: function() {
@@ -69,6 +69,10 @@ var Drummachine = React.createClass({
   },
 
   save: function() {
+    if (this.state.title === "") {
+      this.setState({errors: "Please enter a track title to save"});
+      return;
+    }
     ApiUtil.savePattern({pattern: JSON.stringify(this.state.pattern), title: this.state.title});
   },
 
@@ -160,16 +164,17 @@ var Drummachine = React.createClass({
 
     var playingClass;
     if (this.state.playing) {
-      playingClass = "big-button playing";
+      playingClass = "big-button play playing";
     } else {
-      playingClass = "big-button";
+      playingClass = "big-button play";
     }
 
     return(
+      <div>
       <div className="drum-machine group">
         <div className={playingClass} onClick={this.play}>PLAY</div>
-        <div className="big-button" onClick={this.clear}>Clear</div>
-        <div className="big-button" onClick={this.save}>Save</div>
+        <div className="big-button clear" onClick={this.clear}>Clear</div>
+        <div className="big-button save" onClick={this.save}>Save</div>
         <div className="tempo-slider-group">
           <span className="panel-label">Tempo</span>
           <input onChange={this.setTempo} className="tempo-slider"
@@ -177,7 +182,8 @@ var Drummachine = React.createClass({
             value={this.state.tempo}/>
         </div>
         <div className="save-load-panel">
-          <input type="text" className={"title-input " + open} onChange={this.changeTitle} value={this.state.title}/>
+          <input type="text" className={"title-input " + open} placeholder="Name your pattern"
+          onChange={this.changeTitle} value={this.state.title}/>
           {dropdownIcon}
           <ul className="dropdown">
           {dropdown}
@@ -190,6 +196,8 @@ var Drummachine = React.createClass({
         <div className="buttons">
           {buttons}
         </div>
+      </div>
+      <div className="errors">{this.state.errors}</div>
       </div>
     );
   }
