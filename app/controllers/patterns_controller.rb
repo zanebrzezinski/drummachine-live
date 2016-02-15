@@ -14,7 +14,7 @@ class PatternsController < ActionController::Base
   end
 
   def index
-    @patterns = session[:patterns]
+    @patterns = session[:patterns] || "{}"
     render :index
   end
 
