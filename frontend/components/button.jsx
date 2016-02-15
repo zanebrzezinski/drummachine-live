@@ -15,13 +15,15 @@ var Button = React.createClass({
   },
 
   componentWillReceiveProps: function(newProps) {
-    this.props.sounds.forEach(function(sound){
-      if (newProps.active && this.props.instrument === newProps.instrument) {
+    if (newProps.sounds === this.props.sounds) {
+      newProps.sounds.forEach(function(sound){
         var instrument = document.getElementById(sound + " instrument");
-        instrument.currentTime = 0;
-        instrument.play();
-      }
-    }.bind(this));
+        if (newProps.active) {
+          instrument.currentTime = 0;
+          instrument.play();
+        }
+      }.bind(this));
+    }
   },
 
   render: function(){

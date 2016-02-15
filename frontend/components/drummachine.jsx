@@ -52,7 +52,11 @@ var Drummachine = React.createClass({
   },
 
   clear: function() {
-    this.setState({clear: true});
+    var pattern = [];
+    for (var i = 0; i < 16; i++) {
+      pattern.push([]);
+    }
+    this.setState({pattern: pattern});
     if (this.state.playing) {
       this.play();
     }
