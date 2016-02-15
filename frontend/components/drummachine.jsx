@@ -74,6 +74,7 @@ var Drummachine = React.createClass({
       return;
     }
     ApiUtil.savePattern({pattern: JSON.stringify(this.state.pattern), title: this.state.title});
+    this.setState({title: ""});
   },
 
   changeTitle: function(e){
