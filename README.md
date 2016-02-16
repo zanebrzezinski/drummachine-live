@@ -4,7 +4,8 @@
 
 A drum machine built in Rails, React, and Javascript.
 
-[Instructions]
+Instructions
+
 Click Play to start the sequencer.  Each of the 16 buttons along the bottom can
 clicked to add a sound to that step in the sequence.  The sound can be selected
 with the instrument select buttons in the middle of the drum machine.  Each sound
