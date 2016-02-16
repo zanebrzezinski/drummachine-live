@@ -256,3 +256,8 @@
   font-size: 60px;
   text-align: center;
 }
+
+.instructions {
+  margin: 20px;
+  text-align: left;
+}
