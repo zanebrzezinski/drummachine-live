@@ -261,3 +261,29 @@
   margin: 20px;
   text-align: left;
 }
+
+/* SLIDER STYLING */
+
+input[type=range]{
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 3px;
+  background: #000;
+  border-radius: 5px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 8px;
+  /*border-radius: 50%;*/
+  background: darkred;
+  margin-top: -6px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
