@@ -9,10 +9,7 @@ var Drummachine = React.createClass({
 
   getInitialState: function(){
 
-    var pattern = [];
-    for (var i = 0; i < 16; i++) {
-      pattern.push([]);
-    }
+    var pattern = [["Kick"],[],["Hat"],[],["Kick","Clap"],[],["Hat"],["Snare"],["Kick"],["Kick"],["Hat","Open Hat"],[],["Kick","Hat","Clap"],["Hat"],["Hat"],["Hat"]];
 
     return {playing: false, currentStep: 0, instrument: "Kick",
     tempo: 150, clear: false, pattern: pattern, title: "", allPatterns: {},
@@ -81,6 +78,7 @@ var Drummachine = React.createClass({
     }
     ApiUtil.savePattern({pattern: JSON.stringify(this.state.pattern), title: this.state.title});
     this.setState({title: ""});
+    console.log(JSON.stringify(this.state.pattern));
   },
 
   changeTitle: function(e){

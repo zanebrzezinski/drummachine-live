@@ -1,6 +1,6 @@
 #React Drum Machine
 
-[React Drum Machine](www.google.com)
+[React Drum Machine](drummachine.zanebrzezinski.com)
 
 A drum machine built in Rails, React, and Javascript.
 
