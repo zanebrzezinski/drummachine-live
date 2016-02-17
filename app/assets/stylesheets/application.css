@@ -145,8 +145,6 @@
   color: #000
 }
 
-
-
 .dropdown {
   background-color: white;
   position: absolute;
@@ -155,6 +153,7 @@
   max-height: 200px;
   overflow-y: auto;
   overflow-x: hidden;
+  color: #000;
 }
 
 .dropdown:last-child {
@@ -268,6 +267,11 @@
   margin: 20px;
   text-align: left;
   color: #000
+}
+
+.headline {
+  text-align: center;
+  margin: 5px;
 }
 
 /* SLIDER STYLING */
