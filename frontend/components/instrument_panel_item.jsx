@@ -15,21 +15,23 @@ var InstrumentPanelItem = React.createClass({
 
   render: function() {
     var light;
-
+    var button = "button small";
+    if (this.props.playing === "true") {
+      button += " playing-button";
+    }
     if (this.props.on) {
       light = "light on";
-    } else if (this.props.playing){
-      light = "light playing-light";
     } else {
       light = "light";
     }
+
 
     return (
 
       <ul className="instrument-select">
         <li className="panel-item">
           <span className="panel-label">{this.props.instrument}</span>
-          <div className="button small"
+          <div className={button}
           onClick={this.props.setInstrument} id={this.props.instrument}><div className={light}/></div>
           <span className="panel-label">Volume</span>
           <input className="volume-slider" type="range" onChange={this.changeVolume} value={this.state.volume * 100} min="0" max="100" />

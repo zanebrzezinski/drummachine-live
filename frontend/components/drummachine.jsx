@@ -153,23 +153,29 @@ var Drummachine = React.createClass({
 
     var instrumentPanel = [];
     for (var instrument in sounds) {
+      var playingButton;
+      if (this.state.pattern[this.state.currentStep].indexOf(instrument) !== -1 && this.state.playing) {
+        playingButton = "true";
+      } else {
+        playingButton = "false";
+      }
       if (instrument === this.state.instrument) {
         instrumentPanel.push(
           <InstrumentPanelItem key={instrument + "button"}
-          instrument={instrument} setInstrument={this.setInstrument} on="true"/>
+          instrument={instrument} setInstrument={this.setInstrument} on="true" playing={playingButton}/>
         );
       } else {
         if (this.state.pattern[this.state.currentStep].indexOf(instrument) !== -1) {
           instrumentPanel.push(
             <InstrumentPanelItem key={instrument + "button"}
             instrument={instrument}
-            setInstrument={this.setInstrument} playing="true"/>
+            setInstrument={this.setInstrument} playing={playingButton}/>
           );
         } else {
           instrumentPanel.push(
             <InstrumentPanelItem key={instrument + "button"}
             instrument={instrument}
-            setInstrument={this.setInstrument}/>
+            setInstrument={this.setInstrument} playing={playingButton}/>
           );
         }
       }
