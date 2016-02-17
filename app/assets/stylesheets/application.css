@@ -178,6 +178,8 @@
   padding: 6px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  color: #000;
+  cursor: pointer;
 }
 
 .buttons {
