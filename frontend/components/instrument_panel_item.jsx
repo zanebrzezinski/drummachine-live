@@ -15,8 +15,11 @@ var InstrumentPanelItem = React.createClass({
 
   render: function() {
     var light;
+
     if (this.props.on) {
       light = "light on";
+    } else if (this.props.playing){
+      light = "light playing-light";
     } else {
       light = "light";
     }

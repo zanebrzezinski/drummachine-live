@@ -159,11 +159,19 @@ var Drummachine = React.createClass({
           instrument={instrument} setInstrument={this.setInstrument} on="true"/>
         );
       } else {
-        instrumentPanel.push(
-          <InstrumentPanelItem key={instrument + "button"}
-          instrument={instrument}
-          setInstrument={this.setInstrument} save/>
-        );
+        if (this.state.pattern[this.state.currentStep].indexOf(instrument) !== -1) {
+          instrumentPanel.push(
+            <InstrumentPanelItem key={instrument + "button"}
+            instrument={instrument}
+            setInstrument={this.setInstrument} playing="true"/>
+          );
+        } else {
+          instrumentPanel.push(
+            <InstrumentPanelItem key={instrument + "button"}
+            instrument={instrument}
+            setInstrument={this.setInstrument}/>
+          );
+        }
       }
     }
 

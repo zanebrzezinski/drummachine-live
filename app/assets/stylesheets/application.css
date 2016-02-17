@@ -223,6 +223,10 @@
   background-color: red;
 }
 
+.playing-light {
+  background-color: yellow;
+}
+
 .footer {
   text-align: center;
   color: #aaa;
