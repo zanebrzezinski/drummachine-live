@@ -17,4 +17,4 @@ save button.  Try making a few patterns and switching between them on the fly!
 
 ![screenshot]
 
-[screenshot]: docs/screenshot.png
+[screenshot]: docs/new_screenshot.png

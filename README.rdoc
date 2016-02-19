@@ -4,4 +4,4 @@
 
 ![screenshot]
 
-[screenshot]: docs/screenshot.png
+[screenshot]: docs/new_screenshot.png
