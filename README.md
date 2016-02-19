@@ -15,6 +15,7 @@ The global tempo can be set with the tempo slider in the upper right hand corner
 can be named in the top right, and saved to the browser cookie for later recall with the
 save button.  Try making a few patterns and switching between them on the fly!
 
-![screenshot](http://drummachine.zanebrzezinski.com)
+![screenshot][live-link]
 
 [screenshot]: docs/new_screenshot.png
+[live-link]: http://drummachine.zanebrzezinski.com
