@@ -16,4 +16,4 @@ can be named in the top right, and saved to the browser cookie for later recall 
 save button.  Try making a few patterns and switching between them on the fly!
 
 ![screenshot]
-[![screenshot](docs/new_screenshot.png)](http://drummachine.zanebrzezinski.com)
+[![screenshot](docs/drummachine.png)](http://drummachine.zanebrzezinski.com)
