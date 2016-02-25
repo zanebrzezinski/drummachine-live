@@ -194,7 +194,6 @@ var Drummachine = React.createClass({
         <div className={playingClass} onClick={this.play}>PLAY</div>
         <div className="big-button clear" onClick={this.clear}>Clear</div>
         <div className="big-button save" onClick={this.save}>Save</div>
-
         <div className="save-load-panel">
         <input type="text" className={"title-input " + open} placeholder="Name your pattern"
         onChange={this.changeTitle} value={this.state.title}/>
@@ -204,6 +203,12 @@ var Drummachine = React.createClass({
         </ul>
         </div>
         <div className="instrument-panel">
+          <div className="tempo-slider-group">
+          <span className="panel-label">Tempo</span>
+          <input onChange={this.setTempo} className="tempo-slider"
+          type="range" min="50" max="500"
+          value={this.state.tempo}/>
+          </div>
           {instrumentPanel}
         </div>
 
