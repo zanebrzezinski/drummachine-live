@@ -116,6 +116,7 @@
 .instrument-panel {
   display: block;
   margin: auto;
+  width: 700px;
 }
 
 .instrument-select {
@@ -141,13 +142,14 @@
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   position: relative;
-  color: #000
+  color: #000;
+  width: 200px;
 }
 
 .dropdown {
   background-color: white;
   position: absolute;
-  width: 197px;
+  width: 232px;
   z-index: 50;
   max-height: 200px;
   overflow-y: auto;
@@ -178,6 +180,7 @@
   border-bottom-right-radius: 5px;
   color: #000;
   cursor: pointer;
+  width: 10px;
 }
 
 .buttons {

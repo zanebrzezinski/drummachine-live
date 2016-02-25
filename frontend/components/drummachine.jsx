@@ -128,12 +128,12 @@ var Drummachine = React.createClass({
     var open;
     if (this.state.dropdown){
       dropdownIcon = (
-        <i className="fa fa-caret-down dropdown-arrow open" onClick={this.displayDropdown}></i>
+        <span><i className="fa fa-caret-down dropdown-arrow open" onClick={this.displayDropdown}></i></span>
       );
       open = "open";
     } else {
       dropdownIcon = (
-        <i className="fa fa-caret-left dropdown-arrow" onClick={this.displayDropdown}></i>
+        <span><i className="fa fa-caret-left dropdown-arrow" onClick={this.displayDropdown}></i></span>
       );
       open = "";
     }
@@ -195,19 +195,19 @@ var Drummachine = React.createClass({
         <div className="big-button clear" onClick={this.clear}>Clear</div>
         <div className="big-button save" onClick={this.save}>Save</div>
         <div className="save-load-panel">
-        <input type="text" className={"title-input " + open} placeholder="Name your pattern"
-        onChange={this.changeTitle} value={this.state.title}/>
-        {dropdownIcon}
-        <ul className="dropdown">
-        {dropdown}
-        </ul>
+          <input type="text" className={"title-input " + open} placeholder="Name your pattern"
+          onChange={this.changeTitle} value={this.state.title}/>
+          {dropdownIcon}
+          <ul className="dropdown">
+          {dropdown}
+          </ul>
         </div>
         <div className="instrument-panel">
           <div className="tempo-slider-group">
-          <span className="panel-label">Tempo</span>
-          <input onChange={this.setTempo} className="tempo-slider"
-          type="range" min="50" max="500"
-          value={this.state.tempo}/>
+            <span className="panel-label">Tempo</span>
+            <input onChange={this.setTempo} className="tempo-slider"
+            type="range" min="50" max="500"
+            value={this.state.tempo}/>
           </div>
           {instrumentPanel}
         </div>
