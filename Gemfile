@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.8'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -27,7 +27,6 @@ gem 'aws-sdk', '~> 1.6'
 gem 'figaro'
 gem 'font-awesome-rails'
 gem 'bigdecimal', '1.3.5'
-
 
 
 
