@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'aws-sdk', '~> 1.6'
 gem 'figaro'
 gem 'font-awesome-rails'
-gem 'bigdecimal', '3.1.1'
+gem 'bigdecimal', '1.3.5'
 
 
 
